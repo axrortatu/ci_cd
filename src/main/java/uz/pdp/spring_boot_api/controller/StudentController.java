@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import uz.pdp.spring_boot_api.entity.StudentEntity;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/student")
@@ -17,7 +18,12 @@ public class StudentController {
     @GetMapping("/list")
     @ResponseStatus(HttpStatus.OK)
     public List<StudentEntity> getList(){
-        return List.of();
+        return List.of(new StudentEntity(
+                UUID.randomUUID(),
+                "Diyor",
+                "diyor123",
+                21
+        ));
     }
 
     @PostMapping("/add")
