@@ -29,3 +29,12 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn clean install
+    - name: Build & push Docker image
+       - uses: mr-smithers-excellent/docker-build-push@v6
+       with:
+         image: axror123/ci_cd_with_simply_springboot
+         tags: latest
+         registry: docker.io
+         dockerfile: Dockerfile
+         username: axror123
+         password: Axror123
