@@ -37,5 +37,5 @@ jobs:
        tags: latest
        registry: docker.io
        dockerfile: Dockerfile
-       username: axror123
-       password: Axror123
+       username: ${{ secrets.DOCKER_USERNAME }}
+       password: ${{ secrets.DOCKER_PASSWORD }}
