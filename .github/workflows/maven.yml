@@ -14,18 +14,17 @@ on:
   pull_request:
     branches: [ "master" ]
 
-services:
-  db:
-    image: postgres
-    env:
-      POSTGRES_PASSWORD: axror123
-    ports:
-      - 5432:5432
-
 jobs:
   build:
 
     runs-on: ubuntu-latest
+    services:
+      db:
+        image: postgres
+        env:
+          POSTGRES_PASSWORD: axror123
+        ports:
+          - 5432:5432
 
     steps:
     - uses: actions/checkout@v3
