@@ -1,5 +1,7 @@
 package uz.pdp.spring_boot_api.entity;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import lombok.*;
 
 import java.util.UUID;
@@ -8,10 +10,10 @@ import java.util.UUID;
 @NoArgsConstructor
 @Data
 @Builder
-//@Entity
+@Entity
 public class StudentEntity {
 
-//    @Id
+    @Id
     private UUID id;
     private String name;
     private String username;
