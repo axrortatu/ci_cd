@@ -4,26 +4,21 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import uz.pdp.spring_boot_api.entity.StudentEntity;
+import uz.pdp.spring_boot_api.service.StudentService;
 
 import java.util.List;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/student")
 @RequiredArgsConstructor
 public class StudentController {
 
-//    private final StudentService studentService;
+    private final StudentService studentService;
 
     @GetMapping("/list")
     @ResponseStatus(HttpStatus.OK)
     public List<StudentEntity> getList(){
-        return List.of(new StudentEntity(
-                UUID.randomUUID(),
-                "Diyor",
-                "diyor123",
-                21
-        ));
+        return studentService.getStudentList();
     }
 
     @PostMapping("/add")
@@ -31,6 +26,6 @@ public class StudentController {
     public StudentEntity add(
             @RequestBody StudentEntity studentEntity
     ){
-        return studentEntity;
+        return studentService.addStudent(studentEntity);
     }
 }
