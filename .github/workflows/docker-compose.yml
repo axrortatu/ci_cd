@@ -3,7 +3,7 @@ services:
   db:
     image: postgres:latest
     ports:
-      - 5433:5433
+      - 15432:5432
     restart: always
     environment:
       POSTGRES_DB: mydb
@@ -17,6 +17,6 @@ services:
     depends_on:
       - db
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5433/mydb
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:15432/mydb
       SPRING_DATASOURCE_USERNAME: myuser
       SPRING_DATASOURCE_PASSWORD: mypassword
