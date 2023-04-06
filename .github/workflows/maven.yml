@@ -54,6 +54,5 @@ jobs:
        password: ${{ secrets.DOCKER_PASSWORD }}
     - name: Stop PostgreSQL service
       run: docker-compose down
-
     - name: Start application with Docker Compose
       run: docker-compose up -d
