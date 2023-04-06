@@ -14,20 +14,20 @@ on:
   pull_request:
     branches: [ "master" ]
 
-services:
-  db:
-    image: postgres:latest
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: axror123
-      POSTGRES_DB: postgres9
-    ports:
-      - "5432:5432"
-
 jobs:
   build:
 
     runs-on: ubuntu-latest
+    services:
+      db:
+        image: postgres:latest
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: axror123
+          POSTGRES_DB: postgres9
+        ports:
+          - 5432:5432
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
 
     steps:
     - uses: actions/checkout@v3
@@ -45,6 +45,10 @@ jobs:
       with:
        image: axror123/ci_cd_with_simply_springboot
        tags: latest
+       build-args: |
+         DB_URL=jdbc:postgresql://localhost:5432/postgres9
+         DB_USERNAME=postgres
+         DB_PASSWORD=axror123
        registry: docker.io
        dockerfile: Dockerfile
        username: ${{ secrets.DOCKER_USERNAME }}
