@@ -8,3 +8,5 @@ spring.jpa:
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
