@@ -52,5 +52,8 @@ jobs:
        dockerfile: Dockerfile
        username: ${{ secrets.DOCKER_USERNAME }}
        password: ${{ secrets.DOCKER_PASSWORD }}
-    - name: Run Docker Compose
-      run: docker-compose up
+    - name: Stop PostgreSQL service
+      run: docker-compose down
+
+    - name: Start application with Docker Compose
+      run: docker-compose up -d
