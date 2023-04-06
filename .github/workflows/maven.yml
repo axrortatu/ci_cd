@@ -52,6 +52,9 @@ jobs:
        dockerfile: Dockerfile
        username: ${{ secrets.DOCKER_USERNAME }}
        password: ${{ secrets.DOCKER_PASSWORD }}
+    - name: Run docker-compose down
+      run: |
+        docker-compose down -d
     - name: Run docker-compose up
       run: |
           docker-compose up -d
